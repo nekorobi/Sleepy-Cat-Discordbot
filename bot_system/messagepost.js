@@ -3,8 +3,8 @@
 //botのテスト時，テキストを送信する代わりにコンソールに出力
 //コマンド処理になってきているので使われることはほぼない
 
-const { escapeMarkdown } = require("discord.js")
 const options = require("./options")
+const { escapeAllMarkdown } = require("./escape")
 const logger = require("./logger").logger
 
 exports.send_message = (channel, mes) => {
@@ -16,4 +16,6 @@ exports.send_message = (channel, mes) => {
     }
 }
 
-exports.send_md_escaped_message = (channel, mes) => this.send_message(channel, escapeMarkdown(mes))
+exports.send_md_escaped_message = (channel, mes) => this.send_message(
+    channel, escapeAllMarkdown(mes)
+)
