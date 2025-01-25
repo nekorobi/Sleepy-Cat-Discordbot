@@ -3,14 +3,19 @@
 //bot起動時に行われる処理
 //botの起動準備
 
+
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'options'.
 const options = require("../options")
+
 // @ts-expect-error TS(2580): Cannot find name 'require'. Do you need to install... Remove this comment to see the full error message
 const commands = require("../commands")
+
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'logger'.
 const logger = require("../logger").logger
+
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'name'.
 const name = 'ready'
+
 
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'handler'.
 const handler = () => {
@@ -34,6 +39,7 @@ async function set_commands() {
     }
     logger.info("command set")
 }
+
 
 // @ts-expect-error TS(2580): Cannot find name 'module'. Do you need to install ... Remove this comment to see the full error message
 module.exports = {

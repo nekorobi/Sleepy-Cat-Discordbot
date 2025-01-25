@@ -2,15 +2,20 @@
 
 //通話の入退出，画面共有を感知し，通知を行う
 
+
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'name'.
 const name = 'voiceStateUpdate'
+
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'options'.
 const options = require("../options")
 
+
 // @ts-expect-error TS(2580): Cannot find name 'require'. Do you need to install... Remove this comment to see the full error message
 const messagepost = require("../messagepost")
+
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'logger'.
 const logger = require("../logger").logger
+
 
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'handler'.
 const handler = (oldStatus: any, newStatus: any) => {
@@ -45,6 +50,7 @@ const handler = (oldStatus: any, newStatus: any) => {
     }
 }
 
+
 // @ts-expect-error TS(2580): Cannot find name 'module'. Do you need to install ... Remove this comment to see the full error message
 module.exports = {
     name,
@@ -72,20 +78,26 @@ function __join_vc(status: any) {
         __getVoiceDefaultChannel(status),
         `${status.member.displayName} が ${status.channel} に参加しました`)
     if (String(status.channelId) in vcDict) {
+
         // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         vcDict[status.channelId].members.add(status.member.id)
         if (__getUserLen(status) == 2) {
+
             // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
             vcDict[status.channelId].vcBeginTime = new Date()
         }
     } else {
         let entry = new Object();
+
         // @ts-expect-error TS(2339): Property 'members' does not exist on type 'Object'... Remove this comment to see the full error message
         entry.members = new Set([status.member.id])
+
         // @ts-expect-error TS(2339): Property 'startTime' does not exist on type 'Objec... Remove this comment to see the full error message
         entry.startTime = new Date()
+
         // @ts-expect-error TS(2339): Property 'totalTime' does not exist on type 'Objec... Remove this comment to see the full error message
         entry.totalTime = 0
+
         // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         vcDict[status.channelId] = entry
     }
@@ -96,6 +108,7 @@ function __join_vc(status: any) {
 function __leave_vc(status: any) {
     logger.debug("leave_vc");
     if (String(status.channelId) in vcDict) {
+
         // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         let entry = vcDict[status.channelId]
         if (__getUserLen(status) == 0) {
@@ -106,22 +119,28 @@ function __leave_vc(status: any) {
                 mes += `通話時間:${__getHMS(entry.totalTime)}\n`
                 mes += `参加人数:${entry.members.size}人\n`
                 mes += "参加者:"
+
                 // @ts-expect-error TS(2304): Cannot find name 'membersArray'.
                 membersArray = Array.from(entry.members)
+
                 // @ts-expect-error TS(2304): Cannot find name 'membersArray'.
                 membersArray.forEach((member: any) => {
                     logger.debug(member)
                     logger.debug(status.guild.members.cache.get(member).displayName)
+
                     // @ts-expect-error TS(2304): Cannot find name 'membersArray'.
                     mes += status.guild.members.cache.get(member).displayName + (member != membersArray[membersArray.length - 1] ? ", " : "")
                 });
                 messagepost.send_message(__getVoiceDefaultChannel(status), mes)
+
                 // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
                 delete vcDict[status.channelId]
             }
+
             // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
             delete vcDict[status.channelId]
         } else if (__getUserLen(status) == 1) {
+
             // @ts-expect-error TS(2362): The left-hand side of an arithmetic operation must... Remove this comment to see the full error message
             entry.totalTime += new Date() - entry.vcBeginTime
         }

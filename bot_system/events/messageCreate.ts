@@ -2,16 +2,21 @@
 
 //メッセージが送信されたときに反応するイベント処理
 
+
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'name'.
 const name = 'messageCreate'
+
 
 // @ts-expect-error TS(2580): Cannot find name 'require'. Do you need to install... Remove this comment to see the full error message
 const Discord = require("discord.js")
 
+
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'options'.
 const options = require("../options")
+
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'logger'.
 const logger = require("../logger").logger
+
 
 // @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'handler'.
 const handler = (message: any) => {
@@ -28,6 +33,7 @@ const handler = (message: any) => {
 
     //message.channel.send(mes)
 }
+
 
 // @ts-expect-error TS(2580): Cannot find name 'module'. Do you need to install ... Remove this comment to see the full error message
 module.exports = {
