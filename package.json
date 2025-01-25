@@ -4,7 +4,8 @@
     "discord.js": "^14.14.1",
     "event.js": "^0.1.0",
     "js-yaml": "^4.1.0",
-    "log4js": "^1.0.0"
+    "log4js": "^6.9.1",
+    "ts-migrate": "^0.0.0"
   },
   "name": "sleepy-cat-discordbot",
   "version": "1.0.0",
